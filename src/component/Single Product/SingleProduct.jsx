@@ -23,11 +23,11 @@ const SingleProduct = ({ isAuthenticated, addToCart }) => {
                 <div className="single_product_array">
                     {
                         singleProduct?.images.map((img, index) => (
-                            <img src={`http://localhost:5000/products/${img}`} key={index} onClick={() => handleImageClick(index)} />
+                            <img src={`https://cartwish-backend-dl15.onrender.com/products/${img}`} key={index} onClick={() => handleImageClick(index)} />
                         ))
                     }
                 </div>
-                <img src={`http://localhost:5000/products/${singleProduct?.images[index]}`} alt="" className='single_product_display' />
+                <img src={`https://cartwish-backend-dl15.onrender.com/products/${singleProduct?.images[index]}`} alt="" className='single_product_display' />
 
             </div>
 

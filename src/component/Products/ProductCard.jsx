@@ -12,7 +12,7 @@ const ProductCard = ({ id, product }) => {
         <article className='product_card'>
             <div className="product_image">
                 <NavLink to={`/products/${id}`}>
-                    <img src={`http://localhost:5000/products/${product?.images[0]}`} alt="" />
+                    <img src={`https://cartwish-backend-dl15.onrender.com/products/${product?.images[0]}`} alt="" />
                 </NavLink>
             </div>
 
