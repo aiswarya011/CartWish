@@ -59,6 +59,7 @@ const CartPage = () => {
     }
 
 
+    
     return (
         <section className='align_center cart_page'>
             <h2>My Cart</h2>
