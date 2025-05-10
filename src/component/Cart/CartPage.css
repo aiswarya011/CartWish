@@ -1,0 +1,100 @@
+.cart_page {
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+    padding: 32px 48px;
+}
+
+.user_info {
+    gap: 16px;
+    margin-bottom: 32px;
+    display: block;
+}
+
+.user_name {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+section h2 {
+    text-decoration: underline;
+    padding-bottom: 40px;
+}
+
+.cart_bill {
+    align-self: flex-end;
+    width: 400px;
+    border-collapse: collapse;
+    font-size: 16px;
+    margin-top: 16px;
+    background-color: #fff;
+}
+
+.cart_bill td {
+    padding: 12px 20px;
+    border: 3px solid #e5e5e5;
+}
+
+.cart_bill td:last-child {
+    text-align: end;
+    width: 120px;
+}
+
+.cart_bill_final {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.checkout_button {
+    align-self: flex-end;
+    height: 38px !important;
+    margin: 16px 0;
+    padding: 0 16px !important;
+}
+
+.qty {
+    height: 50px;
+    justify-content: center;
+}
+
+.remove {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+.out-of-stock-message {
+    display: flex;
+    flex-direction: column;
+}
+.qty {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.qty_input {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 5px 0 16px;
+}
+
+.qty_input button {
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+    background-color: #ff8848;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.qty_input button:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.qty_input_count {
+    margin: 0 40px;
+    text-align: center;
+}
