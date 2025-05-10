@@ -51,6 +51,7 @@ const ProductsList = () => {
         }
 
         setFinalProducts(updatedProducts); // Update the displayed data
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [originalProducts, query, sort]);
 
     // Handle search submission
