@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, {  useState } from 'react'
 import './LoginPage.css'
 import { useForm } from 'react-hook-form'
 import { z } from "zod"
@@ -7,38 +7,38 @@ import apiClient from '../../utils/api-client'
 
 // form validation using schema
 const schema = z.object({
-    email: z.string().email({message:'Please enter a valid email'}).min(3),
-    password: z.string().min(3,{message:"Please enter a valid password"})
+    email: z.string().email({ message: 'Please enter a valid email' }).min(3),
+    password: z.string().min(3, { message: "Please enter a valid password" })
 })
 
 const LoginPage = () => {
     const [error, setError] = useState('')
-    const [token, setToken] = useState('')
+    const [setToken] = useState('')
 
     const
         {
             register,
             handleSubmit,
-            formState: { errors , isValid}
+            formState: { errors, isValid }
         } = useForm({ resolver: zodResolver(schema) }); //useForm
 
 
     const onSubmit = async (formData) => {
-         const body = new FormData();
-            body.append("email", formData.email)
-            body.append("password", formData.password)
-        
-             apiClient.post('/user/login', body,
-                {
-                    headers: { 'Content-Type': 'application/json' }
-                })
-                .then(res => {
-                    console.log(res.data.token);
-                    setToken(res.data.token)
-                    sessionStorage.setItem("token", res.data.token)
-                    window.location = '/'
-                })
-                 .catch(error => setError(error.message))
+        const body = new FormData();
+        body.append("email", formData.email)
+        body.append("password", formData.password)
+
+        apiClient.post('/user/login', body,
+            {
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(res => {
+                console.log(res.data.token);
+                setToken(res.data.token)
+                sessionStorage.setItem("token", res.data.token)
+                window.location = '/'
+            })
+            .catch(error => setError(error.message))
         // await logIn(formData, setError)
         //     .then(res => {
         //         setToken(res.data.token)
@@ -49,9 +49,9 @@ const LoginPage = () => {
     }
 
 
-
-    const passwordRef = useRef(null); //useRef hook
-    const emailRef = useRef(null);
+    //useRef hook
+    // const passwordRef = useRef(null); 
+    // const emailRef = useRef(null);
 
     return (
         <section className='align_center form_page'>

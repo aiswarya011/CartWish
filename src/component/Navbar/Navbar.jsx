@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Navbar.css'
 import EachLink from './Link'
-import { NavLink } from 'react-router-dom'
+
 
 const Navbar = ({ user }) => {
     console.log(user)

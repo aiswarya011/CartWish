@@ -1,6 +1,6 @@
-import React, { Children } from 'react'
+import React from 'react'
 import './Link.css'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink,  } from 'react-router-dom'
 
 const EachLink = ({ title, link }) => {
     return (

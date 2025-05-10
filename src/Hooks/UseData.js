@@ -18,6 +18,7 @@ const UseData = (url, customConfig, deps) => {
                 setError(err.message);
                 setIsLoading(false)
             });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps ? deps : []);//when ever url or params changes trigger api call
 
     return { data, error, isLoading }

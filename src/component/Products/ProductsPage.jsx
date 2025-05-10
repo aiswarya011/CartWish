@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './ProductsPage.css'
 import SideBar from './SideBar'
 import ProductsList from './ProductsList'

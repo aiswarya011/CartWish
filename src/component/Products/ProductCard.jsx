@@ -1,9 +1,9 @@
 import React from 'react'
 import './ProductCard.css'
 
-import basket from '../../assets/basket.png';
+
 import star from '../../assets/white-star.png';
-import EachLink from '../Navbar/Link';
+
 import { NavLink } from 'react-router-dom';
 
 

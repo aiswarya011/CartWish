@@ -5,7 +5,7 @@ import UseData from '../../Hooks/UseData'
 
 
 const FeaturedProducts = () => {
-    const { data: products, error } = UseData('/products/featured')
+    const { data: products} = UseData('/products/featured')
   
     return (
         <section className='featured_products'>

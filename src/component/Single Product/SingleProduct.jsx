@@ -1,12 +1,12 @@
-import React, { Children, useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import './SingleProduct.css'
 import { useParams } from 'react-router-dom';
-import apiClient from '../../utils/api-client';
+
 import UseData from '../../Hooks/UseData';
-import Quantity from '../common/Quantity';
+
 
 const SingleProduct = ({ isAuthenticated, addToCart }) => {
-    const [quantity, setQuantity] = useState(1);
+    const [quantity] = useState(1);
     const { id } = useParams();
 
     const { data: singleProduct, error } = UseData(`/products/${id}`) //api call
@@ -23,6 +23,7 @@ const SingleProduct = ({ isAuthenticated, addToCart }) => {
                 <div className="single_product_array">
                     {
                         singleProduct?.images.map((img, index) => (
+                            // eslint-disable-next-line jsx-a11y/alt-text
                             <img src={`https://cartwish-backend-dl15.onrender.com/products/${img}`} key={index} onClick={() => handleImageClick(index)} />
                         ))
                     }
