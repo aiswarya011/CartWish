@@ -13,7 +13,8 @@ const schema = z.object({
 
 const LoginPage = () => {
     const [error, setError] = useState('')
-    const [setToken] = useState('')
+    // eslint-disable-next-line no-unused-vars
+    const [token,setToken] = useState('')
 
     const
         {
