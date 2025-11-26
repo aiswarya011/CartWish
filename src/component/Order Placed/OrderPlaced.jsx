@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import './OrderPlaced.css'
 import Table from "../common/Table";
 import UseData from "../../Hooks/UseData";
-import CircleLoader from "react-spinners/CircleLoader"; // if you use this
+import CircleLoader from "react-spinners/CircleLoader";
 
 const OrderPlaced = () => {
     const navigate = useNavigate();
 
-    const { data: orders, error, isLoading } = UseData("/order");
+    const { data: orders, isLoading } = UseData("/order");
 
     const getProductString = (order) => {
         if (!order?.products?.length) return "No products";

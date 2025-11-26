@@ -6,7 +6,7 @@ import { CircleLoader } from 'react-spinners'
 
 
 const FeaturedProducts = () => {
-    const { data: products, error, isLoading } = UseData('/products/featured')
+    const { data: products, isLoading } = UseData('/products/featured')
 
     return (
         <section className='featured_products'>
