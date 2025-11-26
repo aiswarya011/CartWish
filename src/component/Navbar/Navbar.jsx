@@ -34,6 +34,7 @@ const Navbar = ({ user }) => {
                         user &&
                         <>
                             <EachLink title='Cart' link='/cart' className='align_center'></EachLink>
+                             <EachLink title='My Orders' link='/orderPlaced' className='align_center'></EachLink>
                             <EachLink title='Logout' link='/logout'></EachLink>
                         </>
                     }

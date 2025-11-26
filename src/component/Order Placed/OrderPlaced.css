@@ -1,0 +1,44 @@
+.order_success_container {
+  padding: 40px;
+  text-align: center;
+}
+
+.order_success_container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.order_success_container h3 {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.order_success_container button {
+  margin-top: 30px;
+}
+.order_success_container {
+  padding: 40px;
+  text-align: center;
+}
+
+/* spacing above the table */
+.order_success_container table {
+  margin-top: 30px; /* increase if needed */
+}
+
+/* reduce table width */
+.order_success_container .table_wrapper,
+.order_success_container table {
+  width: 70%;        /* adjust to 60% or 50% if you want smaller */
+  margin-left: auto;
+  margin-right: auto;
+}
+.loader_overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.7);
+  z-index: 999;
+}

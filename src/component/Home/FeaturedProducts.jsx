@@ -2,25 +2,31 @@ import React from 'react'
 import './FeaturedProducts.css'
 import ProductCard from '../Products/ProductCard'
 import UseData from '../../Hooks/UseData'
+import { CircleLoader } from 'react-spinners'
 
 
 const FeaturedProducts = () => {
-    const { data: products} = UseData('/products/featured')
-  
+    const { data: products, error, isLoading } = UseData('/products/featured')
+
     return (
         <section className='featured_products'>
-            <h2>
-                Featured Products
-            </h2>
+            {isLoading ? (
+                <div className="loader_center">
+                    <CircleLoader />
+                </div>
+            ) : (
+                <>
+                    <h2>Featured Products</h2>
 
-            <div className="align_center featured_products_list">
-                {
-                    products?.map(p => (
-                        <ProductCard key={p._id} product={p} id={p._id}></ProductCard>
-                    ))
-                }
-            </div>
+                    <div className="align_center featured_products_list">
+                        {products?.map(p => (
+                            <ProductCard key={p._id} product={p} id={p._id} />
+                        ))}
+                    </div>
+                </>
+            )}
         </section>
+
     )
 }
 

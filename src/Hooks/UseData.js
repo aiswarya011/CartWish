@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import apiClient from '../utils/api-client';
+
 // custom hook
 const UseData = (url, customConfig, deps) => {
     const [data, setData] = useState(null);

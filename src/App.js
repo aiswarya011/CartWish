@@ -18,10 +18,11 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
   const navigate = useNavigate();
 
+  //add to cart 
   const addToCart = (product, quantity) => {
-    console.log(product._id)
-    const updatedCart = [...cart]
 
+    const updatedCart = [...cart]
+    // check if the product already exist
     const productIndex = updatedCart.findIndex(item => item.product._id === product._id)
 
     if (productIndex === -1) {
@@ -36,7 +37,7 @@ function App() {
 
     setCart(updatedCart)
 
-    apiClient.post(`/cart/${product?._id}`, { quantity: quantity })//api
+    apiClient.post(`/cart/${product?._id}`, { quantity: quantity })//api to post the products in cart
       .then(res => {
         toast.success(`Item has been added to your cart!`, {
           position: "bottom-center",
@@ -51,30 +52,7 @@ function App() {
       .catch(error => setCart(cart))
   }
 
-  // useEffect(() => {
-  //   console.log("refreshhhhh")
-  //   try {
-  //     const jwt = sessionStorage.getItem('token')
-  //     const jwtUser = jwtDecode(jwt)
-
-  //     //expiry
-  //     if (Date.now() >= jwtUser.exp * 1000) {
-  //       console.log("expire")
-  //       setIsAuthenticated(false)
-  //       sessionStorage.removeItem('token')
-  //       Location.reload()
-  //     } else {
-  //       console.log("ok")
-  //       setUser(jwtUser)
-  //       setIsAuthenticated(true)
-  //     }
-
-  //   } catch (error) {
-  //     setIsAuthenticated(false)
-  //     console.log("error jwt");
-  //   }
-
-  // }, []);
+ //check the token
   useEffect(() => {
     console.log("Checking authentication...");
     try {

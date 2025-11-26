@@ -98,3 +98,12 @@ section h2 {
     margin: 0 40px;
     text-align: center;
 }
+.loader_overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.7);
+  z-index: 999;
+}

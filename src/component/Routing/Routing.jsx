@@ -9,6 +9,7 @@ import PageNotFound from '../PageNotFound';
 import CartPage from '../Cart/CartPage';
 import Logout from '../Authentication/Logout';
 import ProtectedRouting from './ProtectedRouting';
+import OrderPlaced from '../Order Placed/OrderPlaced';
 
 const Routing = ({ addToCart, isAuthenticated }) => {
     return (
@@ -20,12 +21,19 @@ const Routing = ({ addToCart, isAuthenticated }) => {
             <Route path='/logout' element={<Logout />}></Route>
             <Route path='/signup' element={<SignUp />}></Route>
 
+
             {/* protected routes */}
             <Route path='/cart'
                 element={<ProtectedRouting isAuthenticated={isAuthenticated} htmlElement={<CartPage />}
                 />}>
 
             </Route>
+            <Route path='/orderPlaced'
+                element={<ProtectedRouting isAuthenticated={isAuthenticated} htmlElement={<OrderPlaced />}
+                />}>
+
+            </Route>
+            
             <Route path='*' element={<PageNotFound />}></Route>
         </Routes>
     )
