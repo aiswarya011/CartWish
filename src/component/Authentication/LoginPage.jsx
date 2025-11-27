@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import './LoginPage.css'
 import { useForm } from 'react-hook-form'
 import { z } from "zod"
@@ -7,24 +7,28 @@ import apiClient from '../../utils/api-client'
 
 // form validation using schema
 const schema = z.object({
-    email: z.string().email({ message: 'Please enter a valid email' }).min(3),
-    password: z.string().min(3, { message: "Please enter a valid password" })
-})
+    email: z.string().email({ message: "Please enter a valid email" }).min(3),
+    password: z.string().min(3, { message: "Please enter a valid password" }),
+});
 
 const LoginPage = () => {
     const [error, setError] = useState('')
     // eslint-disable-next-line no-unused-vars
-    const [token,setToken] = useState('')
+    const [token, setToken] = useState('')
 
     const
         {
             register,
             handleSubmit,
             formState: { errors, isValid }
-        } = useForm({ resolver: zodResolver(schema) }); //useForm
+        } = useForm({
+            resolver: zodResolver(schema),
+            mode: "onChange", //immediate validation
+            defaultValues: { email: "", password: "" }, // ensures fields aren't undefined
+        });
 
 
-    const onSubmit = async (formData) => {
+    const onSubmit = (formData) => {
         const body = new FormData();
         body.append("email", formData.email)
         body.append("password", formData.password)
@@ -34,25 +38,13 @@ const LoginPage = () => {
                 headers: { 'Content-Type': 'application/json' }
             })
             .then(res => {
-                console.log(res.data.token);
-                setToken(res.data.token)
-                sessionStorage.setItem("token", res.data.token)
+                setToken(res.data.token) 
+                sessionStorage.setItem("token", res.data.token) // store JWT token in session storage
                 window.location = '/'
             })
             .catch(error => setError(error.message))
-        // await logIn(formData, setError)
-        //     .then(res => {
-        //         setToken(res.data.token)
-        //         sessionStorage.setItem("token", token)
-        //         window.location = '/'
-        //     })
-        //     .catch(error => setError(error.message))
+
     }
-
-
-    //useRef hook
-    // const passwordRef = useRef(null); 
-    // const emailRef = useRef(null);
 
     return (
         <section className='align_center form_page'>
@@ -63,13 +55,12 @@ const LoginPage = () => {
                     <div>
                         <label htmlFor="email">Email</label>
                         <input
-                            // ref={emailRef} //useRef hook
                             type="email"
                             id='email'
                             className='input_text'
                             placeholder='Enter email'
                             {...register("email")}
-                        // onChange={(e) => setUser({ ...user, name: e.target.value })} //useState hook
+           
                         />
                         {
                             errors.email &&
@@ -82,23 +73,12 @@ const LoginPage = () => {
                     <div>
                         <label htmlFor="password">Password</label>
                         <input
-                            // onChange={(e) => setUser({ ...user, phone: e.target.value })}
                             type="password"
-                            //ref={passwordRef} //useRef hook
                             id='password'
                             className='input_text'
                             placeholder='Enter password'
                             {...register("password")} />
-                        {/* show hide using useRef */}
-                        {/* <button onClick={() => console.log(passwordRef.current)}
 
-                            type='button'>
-                            Hide
-                        </button>
-                        <button onClick={() => passwordRef.current.type = 'number'}
-                            type='button'>
-                            show
-                        </button> */}
                         {
                             errors.password &&
                             <em className='error'>

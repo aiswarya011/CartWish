@@ -21,6 +21,18 @@ const OrderPlaced = () => {
             .join(", ");
     };
 
+    if (!orders || orders.length === 0) {
+        return (
+            <>
+                <em style={{ display: "block", textAlign: "center", marginTop: "30px" }}>
+                    <h2>My Orders</h2>
+                    You have not yet placed an order.
+                </em>
+            </>
+        );
+    }
+
+
     return (
         <section className="order_success_container order_section">
             {/* loader overlay */}
@@ -31,7 +43,14 @@ const OrderPlaced = () => {
             )}
 
             <h2>My Orders</h2>
-            {orders &&
+            {/* {orders?.length === 0 && (
+                <em style={{ display: "block", textAlign: "center", marginTop: "10px" }}>
+                    You have not yet placed an order.
+                </em>
+            )} */}
+
+
+            {orders.length > 0 &&
                 <>
 
                     <p>Your order has been placed successfully.</p>
@@ -53,7 +72,7 @@ const OrderPlaced = () => {
                         type="submit"
                         onClick={() => navigate("/")}
                     >
-                       Continue Shopping
+                        Continue Shopping
                     </button>
                 </>
 

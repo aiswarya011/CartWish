@@ -85,4 +85,5 @@
 .addToCart{
     width: fit-content;
     padding: 8px 18px;
+     cursor: pointer;
 }

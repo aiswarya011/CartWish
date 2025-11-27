@@ -1,40 +1,35 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from "zod"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
 import apiClient from '../../utils/api-client'
+import { toast } from 'react-toastify'
 
 
 const schema = z.object({
-  name: z.string().min(1),
-  email: z.string().email(),
-  password: z.string().min(3),
-  address: z.string().min(3)
+  name: z.string().min(1, { message: "Please enter a valid name" }),
+  email: z.string().email({ message: "Please enter a valid email" }),
+  password: z.string().min(3, { message: "Please enter a valid password" }),
+  address: z.string().min(3, { message: "Please enter a valid address" })
 })
 
 const SignUp = () => {
   const [error, setError] = useState('')
+
   const {
     register,
     handleSubmit,
     formState: { errors, isValid }
   } = useForm({
-    resolver: zodResolver(schema)
+    resolver: zodResolver(schema),
+    mode: "onChange", //immediate validation
+    defaultValues: { name: "", email: "", password: "", address: "" }, // ensures fields aren't undefined
   });
 
   let navigate = useNavigate();
 
-  // const onSubmit = async (formData) => {
-  //   await signUp(formData)
-  //     .then(res => {
-  //       navigate('/login')
-  //     })
-  //     .catch(error => {
-  //        setError(error.message)
-  //     })
 
-  // }
   const onSubmit = (formData) => {
     const body = new FormData();
     body.append("name", formData.name)
@@ -44,6 +39,7 @@ const SignUp = () => {
 
     apiClient.post('/user/signup', body)
       .then(res => {
+        toast.success("Sign up Successful!")
         navigate('/login')
       }).catch(error => {
         setError(error.message)
@@ -69,7 +65,7 @@ const SignUp = () => {
               />
               {
                 errors.name &&
-                <em className='error'>Please enter name</em>
+                <em className='error'>{errors.name.message}</em>
               }
 
             </div>
@@ -85,7 +81,7 @@ const SignUp = () => {
               />
               {
                 errors.email &&
-                <em className='error'>Please enter email</em>
+                <em className='error'>{errors.email.message}</em>
               }
             </div>
           </div>
@@ -102,7 +98,7 @@ const SignUp = () => {
               />
               {
                 errors.password &&
-                <em className='error'>Please enter password</em>
+                <em className='error'>{errors.password.message}</em>
               }
             </div>
           </div>
@@ -118,17 +114,20 @@ const SignUp = () => {
             />
             {
               errors.address &&
-              <em className='error'>Please enter address</em>
+              <em className='error'>{errors.address.message}</em>
             }
           </div>
         </div>
+
+
+        {
+          error &&
+          <em className='error'> {error}</em>
+        }
+
         <button type='submit' className='submit' disabled={!isValid}>Sign Up</button>
       </form>
 
-      {
-        error &&
-        <em> {error}</em>
-      }
     </section>
   )
 }

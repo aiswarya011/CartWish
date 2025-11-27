@@ -1,15 +1,16 @@
 import React from 'react'
 import './Navbar.css'
 import EachLink from './Link'
+import { useNavigate } from 'react-router-dom'
 
 
 const Navbar = ({ user }) => {
-    console.log(user)
+    const nav = useNavigate();
     return (
         <div>
             <nav className='align_center navbar'>
                 <div className='align_center'>
-                    <h1 className='navbar_heading'>
+                    <h1 className='navbar_heading' onClick={()=>{nav("/")}}>
                         CartWish
                     </h1>
                 </div>

@@ -63,7 +63,7 @@ const CartPage = () => {
         const oldCart = [...cart]
         checkoutApi()
         .then(()=>{
-            toast.success("Order PlacedSuccessfully!")
+            toast.success("Order Placed Successfully!")
             setCart([])
             navigate('/orderPlaced');
         })
