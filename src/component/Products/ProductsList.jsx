@@ -18,7 +18,7 @@ const ProductsList = () => {
     const { data, error, isLoading } = UseData('/products', {
         params: {
             category: selectedCategory,
-            page: selectedPage
+            page: selectedPage,
         }
     }, [selectedCategory, selectedPage]);
 
@@ -30,6 +30,7 @@ const ProductsList = () => {
 
     // Update `finalProducts` whenever original products, search term, or sort changes
     useEffect(() => {
+
         let updatedProducts = [...originalProducts];
 
         // Apply search filter
@@ -48,10 +49,13 @@ const ProductsList = () => {
             updatedProducts.sort((a, b) => b.reviews.rate - a.reviews.rate);
         } else if (sort === 'rate_asc') {
             updatedProducts.sort((a, b) => a.reviews.rate - b.reviews.rate);
+        } else{
+            updatedProducts = [...originalProducts]; // reset sorting
         }
 
+
         setFinalProducts(updatedProducts); // Update the displayed data
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [originalProducts, query, sort]);
 
     // Handle search submission
@@ -73,18 +77,18 @@ const ProductsList = () => {
     return (
         <section className="products_list_section">
             <header className="align_center products_header">
-               
+
 
                 {/* Search Form */}
-                <form className='align_center navbar_form' onSubmit={handleSearch}>
+                <form className='align_center navbar_form' onChange={handleSearch}>
                     <input
                         type='text'
                         className='navbar_search'
-                        placeholder='Search Products'
+                        placeholder='Search Products...'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className='search_button'>Search</button>
+                    {/* <button className='search_button'>Search</button> */}
                 </form>
 
                 {/* Sorting Dropdown */}
