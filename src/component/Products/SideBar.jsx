@@ -1,6 +1,7 @@
-import React from 'react'
+
 import './sideBar.css'
 import EachLink from '../Navbar/Link'
+
 
 
 const SideBar = ({ category, error }) => {
@@ -9,8 +10,11 @@ const SideBar = ({ category, error }) => {
             <h2>Category</h2>
 
             <div className="category_links">
-                <a href={`/products`}>All Products
-                </a>
+                <EachLink
+                    title="All Products"
+                    link={"/products"}
+                    className='align_center'>
+                </EachLink>
                 {
                     category && category?.map((c, i) => (
                         <EachLink
