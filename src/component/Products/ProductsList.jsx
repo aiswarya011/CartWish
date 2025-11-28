@@ -49,8 +49,6 @@ const ProductsList = () => {
             updatedProducts.sort((a, b) => b.reviews.rate - a.reviews.rate);
         } else if (sort === 'rate_asc') {
             updatedProducts.sort((a, b) => a.reviews.rate - b.reviews.rate);
-        } else{
-            updatedProducts = [...originalProducts]; // reset sorting
         }
 
 
@@ -88,7 +86,7 @@ const ProductsList = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    {/* <button className='search_button'>Search</button> */}
+                   {/* <button className='search_button'>Search</button> */}
                 </form>
 
                 {/* Sorting Dropdown */}
